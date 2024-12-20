@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Job Postings</h2>
+<form method="get">
+    <label for="city">Filter by City:</label>
+    <input type="text" id="city" name="city" value="{{ request.args.get('city', '') }}">
+    <button type="submit">Filter</button>
+</form>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Salary</th>
+        <th>Experience</th>
+        <th>Company</th>
+        <th>City</th>
+    </tr>
+    {% for job in vacancies %}
+    <tr>
+        <td>{{ job.title }}</td>
+        <td>{{ job.salary }}</td>
+        <td>{{ job.experience }}</td>
+        <td>{{ job.company }}</td>
+        <td>{{ job.city }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
